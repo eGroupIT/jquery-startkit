@@ -1,0 +1,19 @@
+//- production
+if global.production
+	script(type='text/javascript').
+		if (window.location.protocol !== 'https:') {
+			location.href = location.href.replace('http://', 'https://');
+		}
+	//- Global site tag (gtag.js) - Google Analytics
+	script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-112777879-1')
+	script.
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'UA-112777879-1');
+	script(src=global.cdnUrl + "/js/manifest." + global.manifest + ".js")
+	script(src=global.cdnUrl + "/js/vendor." + global.vendor + ".js")
+	script(src=global.cdnUrl + "/js/main." + global.main + ".js")
+else
+	script(src="http://localhost:7081/vendor.js")
+	script(src="http://localhost:7081/main.js")

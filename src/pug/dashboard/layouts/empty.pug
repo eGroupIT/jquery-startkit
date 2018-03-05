@@ -1,0 +1,13 @@
+include ../../includes/globalVariable.pug
+
+doctype html
+html(lang='zh-Hant')
+	include ../includes/head.pug
+	body.bg-dark
+		block container
+			.container
+				block main
+		include ../includes/loaders/fullPage.pug
+		include ../includes/importjs.pug
+		
+	

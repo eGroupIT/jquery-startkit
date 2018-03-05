@@ -1,0 +1,166 @@
+//- Navigation
+mixin navbar(options)
+	nav#mainNav.navbar.navbar-expand-lg.navbar-dark.bg-dark.static-top
+		a.navbar-brand(href='/dashboard') eGroup AI
+		button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
+			span.navbar-toggler-icon
+		#navbarResponsive.collapse.navbar-collapse
+			ul#accordion.navbar-nav.navbar-sidenav
+				each option, index in options
+					if option.items
+						- let navLinkClass = 'nav-link nav-link-collapse collapsed';
+						- let secondLevelClass = 'sidenav-second-level collapse';
+						if option.open
+							- navLinkClass = 'nav-link nav-link-collapse';
+							- secondLevelClass = 'sidenav-second-level collapse show';
+						li.nav-item(title=option.title)
+							a(id=option.id class=navLinkClass data-toggle='collapse' data-parent='#accordion' href='#navitem' + index)
+								i(class="fa fa-fw " + option.icon)
+								span.nav-link-text= option.title
+							ul(id='navitem' + index class=secondLevelClass)
+								each item, index2 in option.items
+									- let secondLevelItemClass = '';
+									if item.active
+										- secondLevelItemClass = 'active';
+									li(class=secondLevelItemClass)
+										a(id=item.id href=item.link)=item.title
+					else
+						- let itemClass = 'nav-item';
+						if option.active
+							- itemClass = 'nav-item active';
+						li(class=itemClass title=option.title)
+							a.nav-link(id=option.id href=option.link)
+								i(class="fa fa-fw " + option.icon)
+								span.nav-link-text= option.title
+				//- li.nav-item(title='Download')
+				//-   a.nav-link.nav-link-collapse.collapsed(data-toggle='collapse', href='#download', data-parent='#accordion')
+				//-     i.fa.fa-fw.fa-cloud-download
+				//-     span.nav-link-text
+				//-       | Download
+				//-   ul#download.sidenav-second-level.collapse
+				//-     li
+				//-       a(href='downloadcom.html') COM
+				//- li.nav-item(title='Example Pages')
+				//-   a.nav-link.nav-link-collapse.collapsed(data-toggle='collapse', href='#collapseExamplePages', data-parent='#accordion')
+				//-     i.fa.fa-fw.fa-file
+				//-     span.nav-link-text
+				//-       | Example Pages
+				//-   ul#collapseExamplePages.sidenav-second-level.collapse
+				//-     li
+				//-       a(href='login.html') Login Page
+				//-     li
+				//-       a(href='register.html') Registration Page
+				//-     li
+				//-       a(href='forgot-password.html') Forgot Password Page
+				//-     li
+				//-       a(href='blank.html') Blank Page
+				//- li.nav-item(title='Menu Levels')
+				//-   a.nav-link.nav-link-collapse.collapsed(data-toggle='collapse', href='#collapseMulti', data-parent='#accordion')
+				//-     i.fa.fa-fw.fa-sitemap
+				//-     span.nav-link-text
+				//-       | Menu Levels
+				//-   ul#collapseMulti.sidenav-second-level.collapse
+				//-     li
+				//-       a(href='#') Second Level Item
+				//-     li
+				//-       a(href='#') Second Level Item
+				//-     li
+				//-       a(href='#') Second Level Item
+				//-     li
+				//-       a.nav-link-collapse.collapsed(data-toggle='collapse', href='#collapseMulti2') Third Level
+				//-       ul#collapseMulti2.sidenav-third-level.collapse
+				//-         li
+				//-           a(href='#') Third Level Item
+				//-         li
+				//-           a(href='#') Third Level Item
+				//-         li
+				//-           a(href='#') Third Level Item
+				//- li.nav-item(title='Link')
+				//-   a.nav-link(href='#')
+				//-     i.fa.fa-fw.fa-link
+				//-     span.nav-link-text
+				//-       | Link
+			ul.navbar-nav.sidenav-toggler
+				li.nav-item
+					a#sidenavToggler.nav-link.text-center
+						i.fa.fa-fw.fa-angle-left
+			ul.navbar-nav.ml-auto
+				//- li.nav-item.dropdown
+				//-   a#messagesDropdown.nav-link.dropdown-toggle.mr-lg-2(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+				//-     i.fa.fa-fw.fa-envelope
+				//-     span.d-lg-none
+				//-       | Messages
+				//-       span.badge.badge-pill.badge-primary 12 New
+				//-     span.indicator.text-primary.d-none.d-lg-block
+				//-       i.fa.fa-fw.fa-circle
+				//-   .dropdown-menu(aria-labelledby='messagesDropdown')
+				//-     h6.dropdown-header New Messages:
+				//-     .dropdown-divider
+				//-     a.dropdown-item(href='#')
+				//-       strong David Miller
+				//-       span.small.float-right.text-muted 11:21 AM
+				//-       .dropdown-message.small
+				//-         | Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!
+				//-     .dropdown-divider
+				//-     a.dropdown-item(href='#')
+				//-       strong Jane Smith
+				//-       span.small.float-right.text-muted 11:21 AM
+				//-       .dropdown-message.small
+				//-         | I was wondering if you could meet for an appointment at 3:00 instead of 4:00. Thanks!
+				//-     .dropdown-divider
+				//-     a.dropdown-item(href='#')
+				//-       strong John Doe
+				//-       span.small.float-right.text-muted 11:21 AM
+				//-       .dropdown-message.small
+				//-         | I've sent the final files over to you for review. When you're able to sign off of them let me know and we can discuss distribution.
+				//-     .dropdown-divider
+				//-     a.dropdown-item.small(href='#')
+				//-       | View all messages
+				//- li.nav-item.dropdown
+				//-   a#alertsDropdown.nav-link.dropdown-toggle.mr-lg-2(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+				//-     i.fa.fa-fw.fa-bell
+				//-     span.d-lg-none
+				//-       | Alerts
+				//-       span.badge.badge-pill.badge-warning 6 New
+				//-     span.indicator.text-warning.d-none.d-lg-block
+				//-       i.fa.fa-fw.fa-circle
+				//-   .dropdown-menu(aria-labelledby='alertsDropdown')
+				//-     h6.dropdown-header New Alerts:
+				//-     .dropdown-divider
+				//-     a.dropdown-item(href='#')
+				//-       span.text-success
+				//-         strong
+				//-           i.fa.fa-long-arrow-up.fa-fw
+				//-           | Status Update
+				//-       span.small.float-right.text-muted 11:21 AM
+				//-       .dropdown-message.small This is an automated server response message. All systems are online.
+				//-     .dropdown-divider
+				//-     a.dropdown-item(href='#')
+				//-       span.text-danger
+				//-         strong
+				//-           i.fa.fa-long-arrow-down.fa-fw
+				//-           | Status Update
+				//-       span.small.float-right.text-muted 11:21 AM
+				//-       .dropdown-message.small This is an automated server response message. All systems are online.
+				//-     .dropdown-divider
+				//-     a.dropdown-item(href='#')
+				//-       span.text-success
+				//-         strong
+				//-           i.fa.fa-long-arrow-up.fa-fw
+				//-           | Status Update
+				//-       span.small.float-right.text-muted 11:21 AM
+				//-       .dropdown-message.small This is an automated server response message. All systems are online.
+				//-     .dropdown-divider
+				//-     a.dropdown-item.small(href='#')
+				//-       | View all alerts
+				//- li.nav-item
+				//-   form.form-inline.my-2.my-lg-0.mr-lg-2
+				//-     .input-group
+				//-       input.form-control(type='text', placeholder='Search for...')
+				//-       span.input-group-btn
+				//-         button.btn.btn-primary(type='button')
+				//-           i.fa.fa-search
+				li.nav-item
+					a.nav-link(data-toggle='modal', data-target='#logoutModal')
+						i.fa.fa-fw.fa-sign-out
+						| Logout

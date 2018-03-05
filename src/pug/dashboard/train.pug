@@ -1,0 +1,33 @@
+extends layouts/basic.pug
+
+block append variables
+	-
+		options[1].open = true;
+		options[1].items[0].active = true;
+
+block breadcrumb
+	ol.breadcrumb
+		li.breadcrumb-item
+			a(href='#') 人臉模型
+		li.breadcrumb-item.active 訓練人臉
+
+block main
+	h3 請上傳有人臉的照片
+	p 支援的格式 .jpg .png，一次最多上傳10張
+	.custom-file
+		input#inputUpload.custom-file-input(type='file' accept="image/*" multiple)
+		label.custom-file-label(for='inputUpload') 選擇照片
+	hr
+	.form-group
+		button#buttonStartTraining.btn.btn-primary.d-none 開始訓練
+	#trainResult.faceList.row
+		//- - for (var x = 0; x < 20; x++)
+		//- 	.col-lg-2.col-md-3.col-6
+		//- 		.faceList__item
+		//- 			.faceList__face
+		//- 				.faceList__img
+		//- 					img(src="http://placehold.it/500x500/eee", alt="")
+		//- 			.input__hoverBox
+		//- 				input(type='text' value="蔡依林").input__hover
+		//- 				.fa.fa-pencil
+		//- 				.input__hoverLine

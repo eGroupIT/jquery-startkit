@@ -1,0 +1,6 @@
+{
+	"indent_with_tabs": true,
+	"end_with_newline": true,
+	"e4x": true,
+	"space_after_anon_function": true
+}

@@ -1,0 +1,96 @@
+extends layouts/basic.pug
+
+block append variables
+	-
+		options[2].open = true;
+		options[2].items[0].active = true;
+
+block breadcrumb
+	// Breadcrumbs
+	ol.breadcrumb
+		li.breadcrumb-item
+			a(href='#') 人臉辨識
+		li.breadcrumb-item.active 影片辨識
+
+block main
+	include includes/modals/recognizeRestrict.pug
+	h3 請上傳要辨識的影片
+	.form-group
+		p 調整辨識率
+		input#inputThreshold(data-slider-id='ex1Slider' type='text' data-slider-min='0.4' data-slider-max='0.99' data-slider-step='0.1' data-slider-value='0.6')
+	p 影片大小上限40M
+	.custom-file
+		input#inputUpload.custom-file-input(type='file' accept="video/*")
+		label.custom-file-label(for='inputUpload') 選擇影片
+	hr
+	.row
+		.col-12
+			.card.mb-3
+				.card-header(role='tab')
+					i.fa.fa-question-circle.mr-1
+					a(data-toggle='collapse', href='#collapseOne', role='button', aria-expanded='true', aria-controls='collapseOne') Ｑ＆Ａ
+				#collapseOne.collapse(role='tabpanel')
+					.card-body
+						p.card-text Ｑ: 辨識引擎支援哪些格式？
+						p.card-text Ａ: 支援辨識的格式有mp4,mov,mvi,mkv,flv。
+						hr
+						//- p.card-text Ｑ: 為什麼我只能上傳mp4檔案？
+						//- p.card-text Ａ: 因為網頁能呈現的影片格式只有mp4，因此上傳時請使用mp4的檔案格式。
+						p.card-text Ｑ: 為什麼有些人沒有辨識出來？
+						.d-flex.flex-row
+							div
+								p.card-text Ａ: 
+							div.ml-1
+								p.card-text １. 實際上有辨識出來，但線上版不顯示沒有訓練過的人臉
+								p.card-text ２. 實際上有辨識出來，但相似度小於設定的門檻值
+								p.card-text ３. 人臉 - 長寬未達100pixel、長寬超過影片長寬80%、被不等比壓縮、光線不足或過曝、角度過度歪/斜/仰，造成人臉特徵被遮蔽
+									
+		//- .col-12
+		//- 	.card.mb-3
+		//- 		.card-header(role='tab')
+		//- 			i.fa.fa-video-camera.mr-1
+		//- 			a(data-toggle='collapse', href='#collapseTwo', role='button', aria-expanded='true', aria-controls='collapseTwo') 手機拍攝影片方法
+		//- 		#collapseTwo.collapse.show(role='tabpanel')
+		//- 			.card-body
+		//- 				p.card-text 請依照圖片中手機的角度錄影。
+		//- 				.row
+		//- 					.col-md-6.col-12.mb-3
+		//- 						img.img-fluid(src=global.cdnUrl + "/assets/images/videoIntrduce1.jpg")
+		.col-md-6.col-12
+			// Demo Time Line
+			.card.mb-3
+				.card-header
+					i.fa.fa-video-camera.mr-1
+					| 影片人物出現時間點
+				.card-body
+					.demo
+						.demo__box
+							.demo__timelineContainer
+								//- .demo__timeline
+								//- .demo__timeline
+						#video-container.embed-responsive.embed-responsive-16by9.video__container
+							// Video
+							video#video(src="").embed-responsive-item
+							// Video Controls
+							.video__controls
+								button.video__playButton(type='button') Play
+								.video__menu
+									.video__seekBar
+										.video__seekBarSlider
+											.video__seekBarThumb
+												.demo__time 0:00
+		.col-md-6.col-12
+			.card.mb-3
+				.card-header
+					i.fa.fa-user.mr-1
+					| 影片人物
+				.card-body
+					#recognizeResult.row
+						//- .col.mb-1
+						//- 	img.rounded.mx-auto.d-block(src='http://via.placeholder.com/120x120' alt='...')
+						//- .col.mb-1
+						//- 	img.rounded.mx-auto.d-block(src='http://via.placeholder.com/120x120' alt='...')
+						//- .col.mb-1
+						//- 	img.rounded.mx-auto.d-block(src='http://via.placeholder.com/120x120' alt='...')
+						//- .col.mb-1
+						//- 	img.rounded.mx-auto.d-block(src='http://via.placeholder.com/120x120' alt='...')

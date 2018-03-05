@@ -1,0 +1,27 @@
+extends layouts/basic.pug
+
+block append variables
+	-
+		options[1].open = true;
+		options[1].items[1].active = true;
+
+block breadcrumb
+	ol.breadcrumb
+		li.breadcrumb-item
+			a(href='#') 人臉模型
+		li.breadcrumb-item.active 我的模型
+
+block main
+	h3 我的人臉模型
+	hr
+	#trainedModel.faceList.row
+		//- - for (var x = 0; x < 20; x++)
+		//- 	.col-lg-2.col-md-3.col-4
+		//- 		.faceList__item
+		//- 			.faceList__face
+		//- 				.faceList__img
+		//- 					img(src="http://placehold.it/500x500/eee", alt="")
+		//- 			.input__hoverBox
+		//- 				input(type='text' value="蔡依林").input__hover
+		//- 				.fa.fa-pencil
+		//- 				.input__hoverLine

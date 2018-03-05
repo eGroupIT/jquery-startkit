@@ -1,0 +1,117 @@
+extends layouts/basic.pug
+
+block append variables
+	-
+		options[0].active = true;
+		//- options[1].open = true;
+		//- options[2].open = true;
+		//- options[3].open = true;
+
+block breadcrumb
+	ol.breadcrumb
+		li.breadcrumb-itemactive
+			a(href='#') 首頁
+
+block main
+	.row
+		.col-lg-8
+			.card.mb-3
+				.card-header
+					i.fa.fa-video-camera.mr-1
+					| 使用教學
+				.card-body
+					.embed-responsive.embed-responsive-16by9
+						video#video(src=global.cdnUrl + "/assets/video/FaceRecongnize_20180119_h264_1280X720_30p_demo.mp4" controls muted).embed-responsive-item
+				.card-footer.small.text-muted
+					| Updated at 2018/01/05
+		.col-lg-4
+			.card.mb-3
+				.card-header
+					i.fa.fa-info.mr-1
+					| 聯絡資訊
+				.card-body
+					p 聯絡人 : 林宏恩
+					p email : egroup.daniel@gmail.com
+	hr
+	h3 引擎介紹
+	.row
+		.col-12.mb-3
+			#accordion2(role='tablist')
+				.card
+					.card-header
+						i.fa.fa-file-text-o.mr-1
+						a(data-toggle='collapse', href='#collapseOne', role='button', aria-expanded='true', aria-controls='collapseOne') 環境需求
+					#collapseOne.collapse.show(role='tabpanel', data-parent='#accordion2')
+						.card-body
+							p 1.軟體：Windows 7／10、C++2015轉發套件
+							p 2.硬體：CPU i3第4代以上（指令集SSE3以上）
+							p 3.影像輸入端
+								p Web Camera : 
+									p Full HD 1080P/30fps
+									p 720P/30fps
+								p IP Camera : 
+									p 通訊協定：RTSP、RTMP
+									p 檔案規格：H.264、H.265、M-JPEG
+				.card
+					.card-header
+						i.fa.fa-file-text-o.mr-1
+						a(data-toggle='collapse', href='#collapseTwo', role='button', aria-expanded='true', aria-controls='collapseTwo') 辨識精確度
+					#collapseTwo.collapse(role='tabpanel', data-parent='#accordion2')
+						.card-body
+							p 相似度參數設定：以64個臉部特徵整合成5組個數值運算作為相似度判斷基準，並將辨識結果以文字檔輸出，提供系統開發者整合至應用軟體，依據使用情境自行調整、設定，讓辨識系統可以更方便（低相似度設定），也可以不隨便（高相似度設定）
+							p 深度學習：辨識引擎能夠自行訓練人臉、自動數值化並建立、調整模型，愈多人臉的訓練辨識結果會愈準確
+				.card
+					.card-header
+						i.fa.fa-file-text-o.mr-1.mr-1
+						a(data-toggle='collapse', href='#collapseThree', role='button', aria-expanded='true', aria-controls='collapseThree') 基準臉資料設定
+					#collapseThree.collapse(role='tabpanel', data-parent='#accordion2')
+						.card-body
+							p 做為辨識標的的基準臉，經過辨識引擎訓練後產生的是二進位數值資料，可避免使用者對於肖像權或隱私權的疑議
+							p 若無肖像權或隱私權疑議的應用，辨識引擎也提供臉部截圖的功能，讓系統開發者進行儲存
+							p 基準臉的人臉資料，可選擇批次上傳進行訓練，也可以在本機照相擷取逐一設定以利新增人員資訊，提高使用彈性
+				.card
+					.card-header
+						i.fa.fa-file-text-o.mr-1
+						a(data-toggle='collapse', href='#collapseFour', role='button', aria-expanded='true', aria-controls='collapseFour') 引擎參數設定
+					#collapseFour.collapse(role='tabpanel', data-parent='#accordion2')
+						.card-body
+							p 1.影像偵測速率：自行設定，最高30 FPS（Frame per second）
+							p 2.人臉訓練解析度門檻：可自行設定門檻值（最低40 Pixel，建議擷取100 Pixel）
+							p 3.辨識速度：2 FPS（CPU效能會有30%左右的影響）
+							p 4.設定辨識相似度：依應用情境設定50～100％的判斷標準，讓辨識5.系統可以容易使用很方便（低相似度設定），也可以嚴謹不隨便（高相似度設定）
+							p 6.圖像擷取：
+								p 輸出圖像解析度 (360p~1080p)
+								p 是否裁切影像圖／人臉圖
+								p 是否顯示影像視窗 
+							p 7.輸出位置：選擇辨識結果檔案輸出位置
+				.card
+					.card-header
+						i.fa.fa-file-text-o.mr-1
+						a(data-toggle='collapse', href='#collapseFive', role='button', aria-expanded='true', aria-controls='collapseFive') 應用程式介接模式
+					#collapseFive.collapse(role='tabpanel', data-parent='#accordion2')
+						.card-body
+							p CMD版本
+							p COM版本
+							p 引擎輸出檔案格式
+								p 辨識結果：JSON檔，內含相似度、臉部座標、時間資訊…
+								p 影像圖
+								p 人臉圖
+				.card
+					.card-header
+						i.fa.fa-file-text-o.mr-1
+						a(data-toggle='collapse', href='#collapseSix', role='button', aria-expanded='true', aria-controls='collapseSix') O2O擴充性系統架構
+					#collapseSix.collapse(role='tabpanel', data-parent='#accordion2')
+						.card-body
+							p 可建置成上網的雲端線上辨識伺服器服務，以及不須聯網的線下本機辨識服務，並可整合兩者建構邊界運算（Edge Computing）以擴充辨識對象規模並加快辨識速度
+				.card
+					.card-header
+						i.fa.fa-file-text-o.mr-1
+						a(data-toggle='collapse', href='#collapseSeven', role='button', aria-expanded='true', aria-controls='collapseSeven') 影響辨識效能的因子
+					#collapseSeven.collapse(role='tabpanel', data-parent='#accordion2')
+						.card-body
+							p 1.硬體
+								p Web Cam ／ IP Cam規格
+								p CPU AND Memory規格
+							p 2.環境
+								p 辨識環境的光線條件
+								p 背景的雜訊干擾

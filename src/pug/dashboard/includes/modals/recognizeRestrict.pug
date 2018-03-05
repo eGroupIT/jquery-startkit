@@ -1,0 +1,10 @@
+// Recognize Restrict Modal
+#recognizeRestrictModal.modal.fade(data-backdrop='static' tabindex='-1', role='dialog', aria-labelledby='recognizeRestrictModalLabel', aria-hidden='true')
+  .modal-dialog.modal-dialog-centered(role='document')
+    .modal-content
+      .modal-header
+        h5#recognizeRestrictModalLabel.modal-title 訓練人臉
+      .modal-body
+        | 系統偵測到您尚未訓練人臉，請先訓練人臉
+      .modal-footer
+        a.btn.btn-primary(href='/dashboard/train') 前往
