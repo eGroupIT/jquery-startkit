@@ -1,1 +1,4 @@
 dist/* linguist-vendored
+dist/dashboard/* linguist-vendored
+dist/assets/font/* linguist-vendored
+dist/assets/images/* linguist-vendored
