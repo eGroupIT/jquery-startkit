@@ -1,4 +1,4 @@
-dist/* linguist-vendored
-dist/dashboard/* linguist-vendored
-dist/assets/font/* linguist-vendored
-dist/assets/images/* linguist-vendored
+dist/* linguist-generated
+dist/dashboard/* linguist-generated
+dist/assets/font/* linguist-generated
+dist/assets/images/* linguist-generated
