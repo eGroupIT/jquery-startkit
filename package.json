@@ -1,6 +1,7 @@
 {
-	"title": "jquery-startkit",
-	"version": "v1.0.0",
+	"name": "jquery-startkit",
+  "version": "1.0.0",
+  "description": "eGroup jquery startkit",
 	"scripts": {
 		"dev": "webpack-dev-server --inline --progress --config build/webpack.dev.config.js",
 		"test": "jest"
@@ -27,5 +28,15 @@
 	"dependencies": {
 		"babel-polyfill": "^6.26.0",
 		"isomorphic-fetch": "^2.2.1"
-	}
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eGroupIT/jquery-startkit.git"
+  },
+  "author": "jerry_P",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eGroupIT/jquery-startkit/issues"
+  },
+  "homepage": "https://github.com/eGroupIT/jquery-startkit#readme"
 }
