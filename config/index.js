@@ -2,16 +2,20 @@
 const path = require('path');
 
 module.exports = {
-	dev: {
+  common: {
+    assetsSubDirectory: 'static',
+  },
+
+  dev: {
     assetsPublicPath: '/',
 
     // dev server
     port: 8080,
-    proxyTable: {
-      // '/': 'http://localhost:9080',
-    },
-	},
+  },
 
-	build: {
-	},
+  build: {
+    assetsRoot: path.resolve(__dirname, '../dist'),
+    productionSourceMap: true,
+    bundleAnalyzerReport: true
+  },
 };

@@ -60,7 +60,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 		open: true,
 		overlay: { warnings: false, errors: true },
 		publicPath: config.dev.assetsPublicPath,
-		proxy: config.dev.proxyTable,
 		// necessary for FriendlyErrorsPlugin
 		quiet: true,
 		// https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
@@ -88,7 +87,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 		new CopyWebpackPlugin([
 			{
 				from: path.resolve(__dirname, '../static'),
-				to: 'static',
+				to: config.common.assetsSubDirectory,
 				ignore: ['.*']
 			}
 		])

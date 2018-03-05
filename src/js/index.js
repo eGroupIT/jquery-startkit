@@ -1,3 +1,5 @@
 if (module.hot) module.hot.accept();
 
-console.log('hello world')
+import config from './config';
+
+console.log(config.apiUrl)
