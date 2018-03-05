@@ -1,4 +1,1 @@
-dist/* linguist-generated
-dist/dashboard/* linguist-generated
-dist/assets/font/* linguist-generated
-dist/assets/images/* linguist-generated
+dist/ linguist-generated
