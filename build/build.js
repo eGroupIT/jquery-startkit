@@ -15,7 +15,7 @@ const spinner = ora('building for production...');
 
 spinner.start();
 
-rm(path.posix.join(config.build.assetsRoot, config.common.assetsSubDirectory), (err) => {
+rm(path.posix.join(config.build.assetsRoot), (err) => {
 	if (err) throw err;
 	webpack(webpackConfig, (err, stats) => {
 		spinner.stop();
