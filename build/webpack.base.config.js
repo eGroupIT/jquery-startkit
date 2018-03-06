@@ -47,13 +47,6 @@ module.exports = {
 			},
 		}],
 	},
-	plugins: [
-    new webpack.ProvidePlugin({
-			$: 'jquery',
-			jQuery: 'jquery',
-			'window.jQuery': 'jquery',
-		}),
-  ],
 	node: {
 		// prevent webpack from injecting mocks to Node native modules
 		// that does not make sense for the client
