@@ -8,7 +8,7 @@ module.exports = {
 
   dev: {
     assetsPublicPath: '/',
-
+    notifyOnErrors: true,
     // dev server
     port: 8080,
   },

@@ -8,6 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const portfinder = require('portfinder');
 
+const utils = require('./utils');
 const baseWebpackConfig = require('./webpack.base.config');
 const config = require('../config');
 
@@ -110,14 +111,9 @@ module.exports = new Promise((resolve, reject) => {
 				compilationSuccessInfo: {
 					messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
 				},
-				onErrors: (severity, errors) => {
-					if (severity !== 'error') return
-			
-					const error = errors[0]
-					const filename = error.file && error.file.split('!').pop()
-					
-					console.log(error);
-				}
+				onErrors: config.dev.notifyOnErrors
+				? utils.createNotifierCallback
+				: undefined
 			}))
 
 			resolve(devWebpackConfig)

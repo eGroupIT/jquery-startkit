@@ -1,3 +1,5 @@
 'use strict'
 
-module.exports = require('./assetsPath.js');
+module.exports.assetsPath = require('./assetsPath.js');
+
+module.exports.createNotifierCallback = require('./createNotifierCallback.js');
