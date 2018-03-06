@@ -1,9 +1,9 @@
 const devConfig = {
-  apiUrl: 'cc'
+  apiUrl: 'cc',
 }
 
 const prodConfig = {
-  apiUrl: 'testr'
+  apiUrl: 'testr',
 }
 
 export default process.env.NODE_ENV === 'development' ? devConfig : prodConfig;

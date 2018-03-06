@@ -1,11 +1,14 @@
 {
-	"env": {
-		"2015": true,
-		"2016": true
-	},
 	"extends": "airbnb",
 	"parser": "babel-eslint",
-	"globals": {
-		"$": true
+	"parserOptions": {
+		"ecmaVersion": 7,
+		"sourceType": "module"
+	},
+	"rules": {
+		"semi": 0,
+		"import/no-unresolved": 0,
+		"no-param-reassign": 0,
+		"import/extensions": 0
 	}
 }

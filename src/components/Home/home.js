@@ -1,4 +1,4 @@
-import store from '@/store';
+import store from '@/store'
 
 export default {
   name: 'Home',
@@ -6,30 +6,30 @@ export default {
     return {
       count: 1,
       price: 100,
-      store
+      store,
     };
   },
   computed: {
     totalPrice: {
       // getter
-      get: function () {
+      get() {
         return this.count * this.price
       },
       // setter
-      set: function (newValue) {
+      set(newValue) {
         this.price = newValue / this.count
-      }
-    }
+      },
+    },
   },
   methods: {
-    increment: function() {
+    increment() {
       this.count += 1
     },
-    increment2: function() {
+    increment2() {
       this.price += 100
     },
-    increment3: function() {
+    increment3() {
       store.commit('increment')
-    }
-  }
+    },
+  },
 };
