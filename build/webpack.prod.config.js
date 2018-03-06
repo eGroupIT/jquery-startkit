@@ -19,42 +19,13 @@ const webpackConfig = merge(baseWebpackConfig, {
     app: [
       'babel-polyfill',
       'isomorphic-fetch',
-      './src/js',
+      './src/app.js',
     ],
   },
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
-  },
-  module: {
-    rules: [{
-      test: /\.scss$/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [{
-          loader: 'css-loader',
-          options: {
-            minimize: true,
-          },
-        }, {
-          loader: 'resolve-url-loader',
-        }, {
-          loader: 'sass-loader',
-          options: {
-            sourceMap: true,
-          },
-        }, {
-          loader: 'postcss-loader',
-          options: {
-            parser: 'postcss-scss',
-            plugins: [
-              autoprefixer,
-            ],
-          },
-        }],
-      }),
-    }]
   },
   // https://webpack.js.org/configuration/devtool/#production
   devtool: config.build.productionSourceMap ? '#source-map' : false,

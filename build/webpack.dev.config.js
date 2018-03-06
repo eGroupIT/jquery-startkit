@@ -18,32 +18,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 		app: [
 			'babel-polyfill',
 			'isomorphic-fetch',
-			'./src/js',
+			'./src/app.js',
 		],
 	},
 	output: {
 		filename: '[name].js',
 		publicPath: config.dev.assetsPublicPath
-	},
-	module: {
-		rules:[{
-			test: /\.scss$/,
-			use: [{
-				loader: 'style-loader',
-			}, {
-				loader: 'css-loader',
-				options: {
-					sourceMap: true,
-				},
-			}, {
-				loader: 'resolve-url-loader',
-			}, {
-				loader: 'sass-loader',
-				options: {
-					sourceMap: true,
-				},
-			}],
-		}]
 	},
 	devtool: 'cheap-module-eval-source-map',
 	devServer: {

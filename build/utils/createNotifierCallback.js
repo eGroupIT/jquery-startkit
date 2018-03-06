@@ -5,8 +5,6 @@ const notifier = require('node-notifier')
 const packageConfig = require('../../package.json')
 
 module.exports = (severity, errors) => {
-  console.log(severity)
-  console.log(errors)
   if (severity !== 'error') return
 
   const error = errors[0]

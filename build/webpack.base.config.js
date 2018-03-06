@@ -9,9 +9,18 @@ module.exports = {
 	context: path.resolve(__dirname, '../'),
 	resolve: {
 		extensions: ['.js'],
+	// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+		alias: {
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': path.resolve('src'),
+    }
 	},
 	module: {
 		rules: [{
+			test: /\.vue$/,
+			loader: 'vue-loader',
+			options: utils.createVueLoaderOptions()
+		}, {
 			test: /\.js$/,
 			exclude: /node_modules/,
 			loader: 'babel-loader',
