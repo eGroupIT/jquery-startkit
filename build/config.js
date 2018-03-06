@@ -16,6 +16,6 @@ module.exports = {
   build: {
     assetsRoot: path.resolve(__dirname, '../dist'),
     productionSourceMap: true,
-    bundleAnalyzerReport: true
+    bundleAnalyzerReport: false
   },
 };
