@@ -11,7 +11,7 @@ const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 const utils = require('./utils')
 const baseWebpackConfig = require('./webpack.base.config')
-const config = require('../config')
+const config = require('./config')
 
 const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',

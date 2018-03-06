@@ -10,7 +10,7 @@ const portfinder = require('portfinder');
 
 const utils = require('./utils');
 const baseWebpackConfig = require('./webpack.base.config');
-const config = require('../config');
+const config = require('./config');
 
 const devWebpackConfig = merge(baseWebpackConfig, {
 	mode: 'development',

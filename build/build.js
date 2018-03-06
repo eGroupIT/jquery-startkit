@@ -9,7 +9,7 @@ const rm = require('rimraf');
 const chalk = require('chalk');
 
 const webpackConfig = require('./webpack.prod.config');
-const config = require('../config');
+const config = require('./config');
 
 const spinner = ora('building for production...');
 
