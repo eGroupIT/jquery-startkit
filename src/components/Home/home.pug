@@ -1,13 +1,12 @@
 div
   span 數量{{ count }}
-  button(@click="increment") +1
+  button(@click='increment') +1
   br
   span 價格{{ price }}
-  input(v-model.number="price" type="number")
+  input(v-model.number='price', type='number')
   br
   span 總價
-  input(v-model.number="totalPrice" type="number")
+  input(v-model.number='totalPrice', type='number')
   br
   span Global store count{{store.state.count}}
-  button(@click="increment3") +1
-  
+  button(@click='increment3') +1
